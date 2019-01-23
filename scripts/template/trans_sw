@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH --gres=gpu:1
+#SBATCH --mem=12g
+##SBATCH --nodelist=compute-0-7
+#SBATCH -t 0
+
+#export PYTHONPATH="$(pwd)"
+#export CUDA_VISIBLE_DEVICES="2"
+
+python src/translate.py \
+  --model_dir="outputs_VERSION/NAME/" \
+  --data_path data/ILRL_eng/ \
+  --test_src_file data/IL_eng/ted-test.mtok.spmVSIZE.IL \
+  --test_trg_file data/IL_eng/ted-test.mtok.spm8000.eng \
+  --cuda \
+  --merge_bpe \
+  --beam_size=5 \
+  --poly_norm_m=1 \
+  --max_len=200 \
+  --out_file="ted-test-b5m1" 

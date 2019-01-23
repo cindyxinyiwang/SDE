@@ -1,0 +1,33 @@
+#!/bin/bash
+#SBATCH --gres=gpu:1
+#SBATCH --mem=30g
+##SBATCH --nodelist=compute-0-7
+#SBATCH -t 0
+
+python src/main.py \
+  --clean_mem_every 5 \
+  --reset_output_dir \
+  --output_dir="outputs_VERSION/all-sw-32000_ILRL/" \
+  --train_src_file_list data/IL_eng/ted-train.mtok.spm32000.IL,data/tur_eng/ted-train.mtok.spm32000.tur,data/rus_eng/ted-train.mtok.spm32000.rus,data/por_eng/ted-train.mtok.spm32000.por,data/ces_eng/ted-train.mtok.spm32000.ces \
+  --train_trg_file_list  data/IL_eng/ted-train.mtok.spm8000.eng,data/tur_eng/ted-train.mtok.spm8000.eng,data/rus_eng/ted-train.mtok.spm8000.eng,data/por_eng/ted-train.mtok.spm8000.eng,data/ces_eng/ted-train.mtok.spm8000.eng \
+  --dev_src_file  data/IL_eng/ted-dev.mtok.spm32000.IL \
+  --dev_trg_file  data/IL_eng/ted-dev.mtok.spm8000.eng \
+  --dev_trg_ref  data/IL_eng/ted-dev.mtok.eng \
+  --src_vocab_list data/IL_eng/ted-train.mtok.spm32000.IL.vocab,data/tur_eng/ted-train.mtok.spm32000.tur.vocab,data/rus_eng/ted-train.mtok.spm32000.rus.vocab,data/por_eng/ted-train.mtok.spm32000.por.vocab,data/ces_eng/ted-train.mtok.spm32000.ces.vocab \
+  --trg_vocab_list  data/ILRL_eng/ted-train.mtok.spm8000.eng.vocab \
+  --d_word_vec=128 \
+  --d_model=512 \
+  --log_every=50 \
+  --eval_every=2500 \
+  --ppl_thresh=15 \
+  --merge_bpe \
+  --eval_bleu \
+  --cuda \
+  --batcher='word' \
+  --batch_size 1500 \
+  --valid_batch_size=7 \
+  --patience 8 \
+  --lr_dec 0.95 \
+  --dropout 0.3 \
+  --max_len 10000 \
+  --seed SEED
