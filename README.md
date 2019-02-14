@@ -16,7 +16,7 @@ All the scripts for experiments in the paper can be created from the templates u
 
 The data we use is [multilingual TED corpus](https://github.com/neulab/word-embeddings-for-nmt) by Qi et al.
 
-We provide preprocessed version of the data, which you can get from:
+We provide preprocessed version of the data, which you can get from [here](https://drive.google.com/drive/folders/1ozvk-sEXBuXeFGMwqys5yYXFkO3dbub9?usp=sharing):
 If you are interested int the details of data processing, you can take a look at the script ``make-eng.sh`` and  ``make-data.sh``.
 
 ## Training:
