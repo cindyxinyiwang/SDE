@@ -4,7 +4,7 @@ import re
 
 # make sure the version matches the configuration
 # for example, if in make-cfg.sh, you put s3 as version, there should be an output folder named as outputs_s3/
-version_list = ["s3"]
+version_list = ["s0"]
 temp_dir = { "w": "scripts/template/trans_w", "sw-joint": "scripts/template/trans_sw-joint", "sw": "scripts/template/trans_sw"}
 
 for version in version_list:
