@@ -33,3 +33,6 @@ To make the main experiment scripts for alll 4 languages tested in the paper, si
 To make decode scripts, simply use the file make-trans.py. Change the name of the directory where the experiment outputs are stored if you modify the template scripts during training. Otherwise it should just work by calling:
 ``python make-trans.py``
 
+## Implementation details
+If you are interested in the implementation of SDE: 
+All the components of SDE is implemented in a encoder class [here](https://github.com/cindyxinyiwang/SDE/blob/master/src/model.py#L489). It is a RNN encoder that encodes words using SDE.
